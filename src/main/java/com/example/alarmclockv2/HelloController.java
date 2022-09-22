@@ -1,9 +1,11 @@
 package com.example.alarmclockv2;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
+import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -11,11 +13,8 @@ import java.io.InputStream;
 public class HelloController {
     int hrs = 0;
     int minutes = 0;
-    InputStream file = ClassLoader.class.getResourceAsStream("/com/example/alarmclockv2/default_alarm.wav");
-    @FXML
-    public Label hours;
-    @FXML
-    public Label mins;
+    ClassLoader loader = AlarmClock.class.getClassLoader();
+    BufferedInputStream file = (BufferedInputStream) loader.getResourceAsStream("default.wav");
     @FXML
     public TextField hrfield;
     @FXML
@@ -50,9 +49,9 @@ public class HelloController {
     @FXML
     protected void onSelectClicked() throws FileNotFoundException {
         try {
-            file = new FileInputStream(AlarmClock.filechooser());
+            file = new BufferedInputStream(new FileInputStream(AlarmClock.filechooser()));
         } catch (FileNotFoundException e){
-            file = ClassLoader.class.getResourceAsStream("/com/example/alarmclockv2/default_alarm.wav");
+            file = (BufferedInputStream) loader.getResourceAsStream("default.wav");
         }
     }
 }
