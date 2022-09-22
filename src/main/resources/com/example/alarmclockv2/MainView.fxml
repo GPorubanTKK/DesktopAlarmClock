@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.alarmclockv2.HelloController">
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+    </padding>
+    <bottom>
+        <HBox alignment="CENTER">
+            <HBox HBox.hgrow="ALWAYS">
+                <Text fx:id="alarmstatus" text="Alarm Status: You can sleep in =D" textAlignment="LEFT"/>
+            </HBox>
+            <Region HBox.hgrow="ALWAYS">
+            </Region>
+            <HBox HBox.hgrow="ALWAYS">
+                <Text fx:id="time" text="Time: 00:00:00" textAlignment="RIGHT"/>
+            </HBox>
+        </HBox>
+    </bottom>
+    <center>
+        <VBox alignment="CENTER" spacing="10">
+            <TextField fx:id="hrfield" promptText="Hours"/>
+            <TextField fx:id="minfield" promptText="Minutes"/>
+            <Button text="Set Alarm" onAction="#onSetClicked" fx:id="setalarm" />
+            <Button text="Select Audio" fx:id="selaudio" onAction="#onSelectClicked"/>
+            <Button text="Remove Alarm" fx:id="kill" onAction="#onKillClicked"/>
+        </VBox>
+    </center>
+</BorderPane>
